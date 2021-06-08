@@ -1,0 +1,31 @@
+
+
+#whole{
+    background: url('img/white-notebook-black-data-firewall.jpg') center center no-repeat;
+    background-size: cover;
+    color: white;
+    font-family: vt323, monospace;
+    font-size: 14px;
+    border:solid black;
+    text-align: center;
+    
+}
+
+ul{
+    color:red;
+    margin:0 150px 0
+}
+
+h1{
+    width:300px;
+    text-align: center;
+    margin:0 auto;
+   
+    color: white;
+}
+
+.submit{
+    
+    padding: 10px;
+}
+
