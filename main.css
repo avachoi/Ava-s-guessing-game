@@ -1,31 +1,37 @@
 
-
-#whole{
-    background: url('img/white-notebook-black-data-firewall.jpg') center center no-repeat;
+body{
+    background: url('img/3820574.jpg') center center no-repeat;
     background-size: cover;
+}
+#whole{
+    
     color: white;
     font-family: vt323, monospace;
     font-size: 14px;
-    border:solid black;
     text-align: center;
     
 }
 
 ul{
-    color:red;
-    margin:0 150px 0
+    color:black;
+    margin:0 150px 0;
+    font-weight:bold;
 }
 
 h1{
-    width:300px;
+    width:500px;
     text-align: center;
     margin:0 auto;
-   
     color: white;
+    position:relative;
+    font-size: 50px;
 }
 
 .submit{
     
     padding: 10px;
 }
-
+#hint-box{
+    color: #26c1d3;
+    font-size:40px;
+}
