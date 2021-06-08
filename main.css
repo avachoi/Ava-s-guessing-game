@@ -35,3 +35,15 @@ h1{
     color: #26c1d3;
     font-size:40px;
 }
+#submitButton{
+    color:white;
+    background:#1f0641;
+}
+#playAgain{
+    color:white;
+    background-color: #26c1d3;
+}
+#hint{
+    color:white;
+    background-color: #293b7f;
+}
