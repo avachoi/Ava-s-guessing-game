@@ -1,6 +1,6 @@
 
 body{
-    background: url('img/3820574.jpg') center center no-repeat;
+    background: url('img/3820574.jpg') no-repeat center center fixed;
     background-size: cover;
 }
 #whole{
@@ -18,7 +18,19 @@ ul{
     font-weight:bold;
 }
 
+li{
+    color: white;
+    font-size: 30px;
+    display:inline;
+    width:50px;
+    margin:8px;
+    /* border: 1px solid rgb(64,7,97); */
+    padding: 10px;
+    background-color: rgba(64, 7, 97, 0.4);
+}
+
 h1{
+    padding:180px;
     width:500px;
     text-align: center;
     margin:0 auto;
@@ -38,12 +50,25 @@ h1{
 #submitButton{
     color:white;
     background:#1f0641;
+    height: 38px;
+    border-radius: 7px;
 }
 #playAgain{
     color:white;
     background-color: #26c1d3;
+    width:100px;
+    border-radius: 7px;
 }
 #hint{
     color:white;
     background-color: #293b7f;
+    border-radius: 7px;
+
+}
+
+#input{
+    width:30px;
+    height: 30px;
+    border-radius: 7px;
+
 }
