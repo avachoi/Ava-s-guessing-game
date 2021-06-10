@@ -14,6 +14,7 @@ class Game{
         this.message=document.getElementById('hint-box')
         this.playAgain=document.getElementById('playAgain')
         this.hint=document.getElementById('hint')
+        this.input=document.getElementById('input')
     }
     
     playersGuessSubmission(num){
@@ -29,24 +30,29 @@ class Game{
                 return Math.abs(this.playersGuess-this.winningNumber)
             }
     checkGuess(){
+        console.log('winningNumber',this.winningNumber)
         if(this.playersGuess===this.winningNumber){
             this.message.innerHTML= 'You Win!';
-            //finish
+            this.disable(this.hint);
+            this.disable(this.input);
+        
         }else if(this.pastGuesses.includes(this.playersGuess)){
             this.message.innerHTML= "You have already guessed that number."
         }else{
-                this.pastGuesses.push(this.playersGuess);
-                if(this.pastGuesses.length > 4){
-                    this.message.innerHTML= "You Lose."
-                }else if(this.difference() < 10){
-                    this.message.innerHTML= "You\'re burning up!"
-                }else if(this.difference() < 25){
-                    this.message.innerHTML= "You're lukewarm."
-                }else if(this.difference() < 50){
-                    this.message.innerHTML= "You're a bit chilly."
-                }else if(this.difference() < 100){
-                    this.message.innerHTML= "You're ice cold!"
-                }
+            this.pastGuesses.push(this.playersGuess);
+            if(this.pastGuesses.length > 4){
+                this.disable(this.hint);
+                this.disable(this.input);
+                this.message.innerHTML= "You Lose."
+            }else if(this.difference() < 10){
+                this.message.innerHTML= "You\'re burning up!"
+            }else if(this.difference() < 25){
+                this.message.innerHTML= "You're lukewarm."
+            }else if(this.difference() < 50){
+                this.message.innerHTML= "You're a bit chilly."
+            }else if(this.difference() < 100){
+                this.message.innerHTML= "You're ice cold!"
+            }
             
         }
         this.pre0.innerHTML= this.pastGuesses[0] ? this.pastGuesses[0] : "";
@@ -55,10 +61,19 @@ class Game{
         this.pre3.innerHTML= this.pastGuesses[3] ? this.pastGuesses[3] : "";
        return this.message
     }
-    
+
+    disable(element){
+        element.disabled = true;
+    }
+
+    enable(element){
+        element.disabled = false;
+    }
+
     generateWinningNumber(){
         return Math.ceil(Math.random()*100)
     }
+
     getInputAndUpdate(input){
         const newNumber= Number(input.value);           //value: input에 입력한 값
         
@@ -67,6 +82,11 @@ class Game{
     }
 
     reset(){
+        // disableInputBox()
+        this.input.value=''
+        this.enable(this.hint);
+        this.enable(this.input);
+        this.winningNumber= this.generateWinningNumber();
         this.pastGuesses=[];
         pre3.innerHTML= '';
         pre2.innerHTML= '';
@@ -74,18 +94,18 @@ class Game{
         pre0.innerHTML= '';
         this.message.innerHTML='Take a guess between 1-100'
     }
+
     shuffle(arr) {
         //Fisher-Yates - https://bost.ocks.org/mike/shuffle/
         for (let i = arr.length - 1; i > 0; i--) {
-            console.log('many',i)
           let randomIndex = Math.floor(Math.random() * (i + 1)); //2,1,0  1,0
           let temp = arr[i];  //arr[2]
           arr[i] = arr[randomIndex];       //arr[2]=arr[1]
           arr[randomIndex] = temp;
         }
         return arr
-        // return alert(`Choose one of ${arr}`);
-      }
+    }
+
     provideHint(){
         let hints=[1,2,3];
         hints[0]=this.winningNumber;
@@ -106,14 +126,10 @@ function newGame(){
 
 function playGame(){
     const game=newGame()
-    console.log(game)
     const submitButton= document.getElementById('submitButton');
-    console.log(submitButton)
     submitButton.addEventListener('click', function(){         // element.method()
 
         const input= document.querySelector('input');
-        console.log(input)
-        //call checkGuess function
         game.getInputAndUpdate(input)
         
     })     
